@@ -99,8 +99,8 @@ fn main() {
     for row_index in 0..row_length+1 {
         let mut new_instance = value_desc {number: 0, row: 0, column_start: 0, column_end: 0};
 
-        for column_index in 0..column_length+1 {
-            let value = str_matrix[row_index][column_index].output_converter();
+        for column_index in 0..=column_length+1 {
+            let value = if column_index == column_length + 1 {11} else {str_matrix[row_index][column_index].output_converter()};
             if value < 10 {
                 if new_instance.number == 0 {
                     new_instance.row = row_index;
@@ -139,7 +139,6 @@ fn main() {
 
                     if value_valid == true {
                         count += 1;
-                        println!("{}   {}", new_instance.number, count);
                         sum += new_instance.number;    
                     }
 
